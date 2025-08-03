@@ -1,0 +1,21 @@
+name: Simple Test Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      message:
+        description: 'Uma mensagem para exibir no workflow'
+        required: false
+        default: 'Nenhuma mensagem fornecida.'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Display message
+      run: |
+        echo "Workflow acionado com sucesso!"
+        echo "Mensagem recebida: ${{ github.event.inputs.message }}"
